@@ -49,7 +49,7 @@ Firebase project (with Google Sign-In enabled)
 Steps
 Clone the repository:
 
-git clone https://github.com/yourusername/task-management-app.git
+git clone https://github.com/Mahabub2030/taks-mangment
 cd task-management-app
 Install dependencies:
 
@@ -62,7 +62,7 @@ npm run server
 Run the frontend:
 
 npm run dev
-Open the app in the browser: http://localhost:3000
+Open the app in the browser: http://localhost:5000
 
 Tech Stack
 Frontend: React, Vite.js, react-beautiful-dnd
