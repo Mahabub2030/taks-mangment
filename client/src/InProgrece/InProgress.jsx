@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import React, { useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import Swal from "sweetalert2";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const InProgress = () => {
   const queryClient = useQueryClient();
@@ -11,7 +11,7 @@ const InProgress = () => {
   const { data: tasks = [], isLoading, error } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/tasks");
+      const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const InProgress = () => {
       });
 
       if (result.isConfirmed) {
-        const res = await axios.delete(`http://localhost:5000/tasks/${id}`);
+        const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
 
         if (res.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your task has been deleted.", "success");
@@ -52,7 +52,7 @@ const InProgress = () => {
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
     const res = await axios.put(
-      `http://localhost:5000/tasks/${editTask._id}`,
+      `https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${editTask._id}`,
       editTask
     );
     console.log(res);

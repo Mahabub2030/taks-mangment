@@ -1,9 +1,9 @@
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
-import Swal from "sweetalert2";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import axios from "axios";
+import React, { useState } from "react";
 import { MdDeleteForever, MdModeEditOutline } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const ManageTask = () => {
   const {
@@ -14,9 +14,7 @@ const ManageTask = () => {
   } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://assinment-eleven-server-site.vercel.app/tasks"
-      );
+      const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
       return res.data;
     },
   });
@@ -43,7 +41,7 @@ const ManageTask = () => {
       });
 
       if (result.isConfirmed) {
-        const res = await axios.delete(`http://localhost:5000/tasks/${id}`);
+        const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
 
         if (res.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your task has been deleted.", "success");
@@ -79,7 +77,7 @@ const ManageTask = () => {
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
     const res = await axios.put(
-      `http://localhost:5000/tasks/${editTask._id}`,
+      `https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${editTask._id}`,
       editTask
     );
     refetch();
@@ -255,7 +253,7 @@ export default ManageTask;
 //   const { data = [], isLoading, error, refetch } = useQuery({
 //     queryKey: ["tasks"],
 //     queryFn: async () => {
-//       const res = await axios.get("http://localhost:5000/tasks");
+//       const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
 //       return res.data;
 //     },
 //   });
@@ -280,7 +278,7 @@ export default ManageTask;
 //       });
 
 //       if (result.isConfirmed) {
-//         const res = await axios.delete(`http://localhost:5000/tasks/${id}`);
+//         const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
 //         if (res.data.deletedCount > 0) {
 //           Swal.fire("Deleted!", "Your task has been deleted.", "success");
 //           refetch();
@@ -312,7 +310,7 @@ export default ManageTask;
 
 //   const handleSubmitUpdate = async (e) => {
 //     e.preventDefault();
-//     await axios.put(`http://localhost:5000/tasks/${editTask.id}`, editTask);
+//     await axios.put(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${editTask.id}`, editTask);
 //     refetch();
 //   };
 

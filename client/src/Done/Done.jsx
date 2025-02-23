@@ -1,14 +1,14 @@
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import axios from "axios";
 
 const ToDo = () => {
   const { data = [], isLoading } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/tasks");
+      const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const ToDo = () => {
       });
 
       if (result.isConfirmed) {
-        const res = await axios.delete(`http://localhost:5000/tasks/${id}`);
+        const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
 
         if (res.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your task has been deleted.", "success");

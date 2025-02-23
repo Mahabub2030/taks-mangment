@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddTask = () => {
@@ -36,26 +36,26 @@ const AddTask = () => {
       return;
     }
 
-  axios
-    .post("http://localhost:5000/tasks", {
-      title,
-      description,
-      category,
-    })
-    .then(() => {
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Task added successfully!",
-      });
+    axios
+      .post("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks", {
+        title,
+        description,
+        category,
+      })
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Task added successfully!",
+        });
 
-      setTitle("");
-      setDescription("");
-      setCategory("To-Do");
-      setTitleError("");
-      setDescError("");
-    })
-    .catch((error) => console.error("Error adding task:", error));
+        setTitle("");
+        setDescription("");
+        setCategory("To-Do");
+        setTitleError("");
+        setDescError("");
+      })
+      .catch((error) => console.error("Error adding task:", error));
   };
 
   return (

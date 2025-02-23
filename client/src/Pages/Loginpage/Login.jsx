@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Authcontext } from "../../shared Component/Authprovider/Authprovider";
-import Swal from "sweetalert2";
-import axios from "axios";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import animation from "../../../public/animation.json";
 import { Player } from "@lottiefiles/react-lottie-player";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import animation from "../../../public/animation.json";
+import { Authcontext } from "../../shared Component/Authprovider/Authprovider";
 const LoginPage = () => {
   const { userLogin, googleLogin } = useContext(Authcontext);
   const [showPassword, setShowPassword] = useState(false);
@@ -66,7 +66,7 @@ const LoginPage = () => {
           email,
         }
 
-        axios.post('http://localhost:5000/user',userInformation)
+        axios.post('https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/user',userInformation)
         .then((res)=>console.log(res.data))
 
         // SweetAlert success message for Google login

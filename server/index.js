@@ -7,11 +7,11 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
+      "https://email-7be99.web.app",
       // "https://loginfrom-525ec.web.app",
-      "http://localhost:5000",
-      "http://localhost:5000",
-      // "https://loginfrom-525ec.firebaseapp.com",
+      "https://email-7be99.firebaseapp.com",
+      // "http://localhost:9000",
+      "https://email-7be99.firebaseapp.com",
     ],
     credentials: true,
   })
@@ -19,7 +19,8 @@ app.use(
 app.use(express.json());
 
 
-const uri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ac-cgkxfia-shard-00-00.x9t7sgg.mongodb.net:27017,ac-cgkxfia-shard-00-01.x9t7sgg.mongodb.net:27017,ac-cgkxfia-shard-00-02.x9t7sgg.mongodb.net:27017/?ssl=true&replicaSet=atlas-nszs70-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0`;
+ const uri =
+   "mongodb+srv://Tasks-Management:rmz7fy3NqQ9GPlsB@cluster0.x9t7sgg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -31,15 +32,16 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    const dataBase = client.db("taskManageMent");
-    const db = client.db("taskManagement");
+    const db = client.db("taskaManagmnets");
     const tasksCollection = db.collection("tasks");
     const userCollection = db.collection("users");
 
+    
     // CRUD APIs
     app.post("/tasks", async (req, res) => {
-      const task = req.body;
+      const tasks = req.body;
       const result = await tasksCollection.insertOne(tasks);
+
       res.send(result);
     });
 
