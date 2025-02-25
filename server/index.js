@@ -5,14 +5,7 @@ const port = process.env.PROT || 5000;
 const app = express();
 
 app.use(
-  cors({
-    origin: [
-      "https://email-7be99.web.app",
-      "https://email-7be99.firebaseapp.com",
-      "https://server-pied-omega.vercel.app",
-    ],
-    credentials: true,
-  })
+  cors()
 );
 app.use(express.json());
 
