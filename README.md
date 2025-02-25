@@ -63,7 +63,7 @@ npm run server
 Run the frontend:
 
 npm run dev
-Open the app in the browser: https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app
+Open the app in the browser: https://server-pied-omega.vercel.app
 
 Tech Stack
 Frontend: React, Vite.js, react-beautiful-dnd

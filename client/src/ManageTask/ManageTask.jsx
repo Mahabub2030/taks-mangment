@@ -14,7 +14,7 @@ const ManageTask = () => {
   } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
+      const res = await axios.get("https://server-pied-omega.vercel.app/tasks");
       return res.data;
     },
   });
@@ -41,7 +41,7 @@ const ManageTask = () => {
       });
 
       if (result.isConfirmed) {
-        const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
+        const res = await axios.delete(`https://server-pied-omega.vercel.app/tasks/${id}`);
 
         if (res.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your task has been deleted.", "success");
@@ -77,14 +77,15 @@ const ManageTask = () => {
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
     const res = await axios.put(
-      `https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${editTask._id}`,
+      `https://server-pied-omega.vercel.app/tasks/${editTask._id}`,
       editTask
     );
     refetch();
     // queryClient.invalidateQueries(["tasks"]);
+    
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p >Loading...</p>;
 
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -253,7 +254,7 @@ export default ManageTask;
 //   const { data = [], isLoading, error, refetch } = useQuery({
 //     queryKey: ["tasks"],
 //     queryFn: async () => {
-//       const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
+//       const res = await axios.get("https://server-pied-omega.vercel.app/tasks");
 //       return res.data;
 //     },
 //   });
@@ -278,7 +279,7 @@ export default ManageTask;
 //       });
 
 //       if (result.isConfirmed) {
-//         const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
+//         const res = await axios.delete(`https://server-pied-omega.vercel.app/tasks/${id}`);
 //         if (res.data.deletedCount > 0) {
 //           Swal.fire("Deleted!", "Your task has been deleted.", "success");
 //           refetch();
@@ -310,7 +311,7 @@ export default ManageTask;
 
 //   const handleSubmitUpdate = async (e) => {
 //     e.preventDefault();
-//     await axios.put(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${editTask.id}`, editTask);
+//     await axios.put(`https://server-pied-omega.vercel.app/tasks/${editTask.id}`, editTask);
 //     refetch();
 //   };
 

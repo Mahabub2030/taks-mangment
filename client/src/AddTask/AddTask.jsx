@@ -1,13 +1,20 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddTask = () => {
+
+   <Helmet>
+     <title>Add Task ||</title>
+   </Helmet>;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("To-Do");
   const [titleError, setTitleError] = useState("");
   const [descError, setDescError] = useState("");
+ const navigate = useNavigate();
 
   const handleTitleChange = (e) => {
     const inputValue = e.target.value;
@@ -37,7 +44,7 @@ const AddTask = () => {
     }
 
     axios
-      .post("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks", {
+      .post("https://server-pied-omega.vercel.app/tasks", {
         title,
         description,
         category,
@@ -48,12 +55,14 @@ const AddTask = () => {
           title: "Success",
           text: "Task added successfully!",
         });
+        navigate("/ManageTask");
 
         setTitle("");
         setDescription("");
         setCategory("To-Do");
         setTitleError("");
         setDescError("");
+        navagete("/ManageTask");
       })
       .catch((error) => console.error("Error adding task:", error));
   };

@@ -66,7 +66,7 @@ const LoginPage = () => {
           email,
         }
 
-        axios.post('https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/user',userInformation)
+        axios.post('https://server-pied-omega.vercel.app/user',userInformation)
         .then((res)=>console.log(res.data))
 
         // SweetAlert success message for Google login

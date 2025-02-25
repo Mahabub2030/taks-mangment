@@ -7,7 +7,7 @@ const ToDo = () => {
   const { data = [], isLoading } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
+      const res = await axios.get("https://server-pied-omega.vercel.app/tasks");
       return res.data;
     },
   });

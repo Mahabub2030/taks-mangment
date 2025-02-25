@@ -8,7 +8,7 @@ const ToDo = () => {
   const { data = [], isLoading } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios.get("https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks");
+      const res = await axios.get("https://server-pied-omega.vercel.app/tasks");
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const ToDo = () => {
       });
 
       if (result.isConfirmed) {
-        const res = await axios.delete(`https://server-9cbm2dzrw-mahabub2030s-projects.vercel.app/tasks/${id}`);
+        const res = await axios.delete(`https://server-pied-omega.vercel.app/tasks/${id}`);
 
         if (res.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your task has been deleted.", "success");

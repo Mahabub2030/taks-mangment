@@ -8,10 +8,8 @@ app.use(
   cors({
     origin: [
       "https://email-7be99.web.app",
-      // "https://loginfrom-525ec.web.app",
       "https://email-7be99.firebaseapp.com",
-      // "http://localhost:9000",
-      "https://email-7be99.firebaseapp.com",
+      "https://server-pied-omega.vercel.app",
     ],
     credentials: true,
   })
@@ -19,8 +17,20 @@ app.use(
 app.use(express.json());
 
 
+
+// const uri = `mongodb+srv://Tasks-Management:rmz7fy3NqQ9GPlsB@cluster0.x9t7sgg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+ 
+
  const uri =
-   "mongodb+srv://Tasks-Management:rmz7fy3NqQ9GPlsB@cluster0.x9t7sgg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+   "mongodb://Tasks-Management:rmz7fy3NqQ9GPlsB@ac-cgkxfia-shard-00-00.x9t7sgg.mongodb.net:27017,ac-cgkxfia-shard-00-01.x9t7sgg.mongodb.net:27017,ac-cgkxfia-shard-00-02.x9t7sgg.mongodb.net:27017/?ssl=true&replicaSet=atlas-nszs70-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0";
+   
+ MongoClient.connect(uri, function (err, client) {
+   const collection = client.db("test").collection("devices");
+   // perform actions on the collection object
+   client.close();
+ });
+
+;
 
 const client = new MongoClient(uri, {
   serverApi: {
